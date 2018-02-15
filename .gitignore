@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# useless additional files
+src/.vs/Desktop_petit/v15/*.*
+src/.vs/src/v15/Setver/*.*
