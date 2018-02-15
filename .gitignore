@@ -1,9 +1,9 @@
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
+src/[Ll]ibrary/
+src/[Tt]emp/
+src/[Oo]bj/
 /[Bb]uild/
-/[Bb]uilds/
-/Assets/AssetStoreTools*
+src/[Bb]uilds/
+src/Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -34,5 +34,4 @@ sysinfo.txt
 *.unitypackage
 
 # useless additional files
-src/.vs/Desktop_petit/v15/*.*
-src/.vs/src/v15/Setver/*.*
+src/.vs/
