@@ -3,9 +3,9 @@
 
 ### Update 2018/06/05
 
-Now using Unity 2018.12f1 with WinAPI(user32.dll + dwmapi.dll)
-Window can now auto resize to fit the sprite
-window can now be dragged with left mouse button
+Now using Unity 2018.12f1 with WinAPI(user32.dll + dwmapi.dll)<br/>
+Window can now auto resize to fit the sprite<br/>
+window can now be dragged with left mouse button<br/>
 
 ---
 A desktop pet. I'm making it to experiment with Unity shaders and Live2D. 
