@@ -9,8 +9,8 @@ public class TransparentWindow : MonoBehaviour
 
     private struct MARGINS
     {
-        public int csLeftWidth;
-        public int csRightWidth;
+        public int cxLeftWidth;
+        public int cxRightWidth;
         public int cyTopHeight;
         public int cyBottomHeight;
     }
@@ -41,24 +41,24 @@ public class TransparentWindow : MonoBehaviour
 
     private void Start()
     {
-        #if !UNITY_EDITOR
-        var margins = new MARGINS() { csLeftWidth = -1};
+#if !UNITY_EDITOR
+        var margins = new MARGINS() { cxLeftWidth = -1};
 
         //handle
         var hwnd = GetActiveWindow();
 
         //set properties
+        //standard window: WS_CAPTION | WS_POPUP | WS_VISIBLE | WS_CLIPSIBLINGS | WS_SYSMENU
+        //removes border and title
         SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
 
         //Extend window into client area
         DwmExtendFrameIntoClientArea(hwnd, ref margins);
 
-        #endif
+#endif
     }
-
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         Graphics.Blit(source, destination, m_Material);
     }
-
 }
