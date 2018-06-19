@@ -35,9 +35,10 @@ public class TransparentWindow : MonoBehaviour
     //??????
     //Definitions of window styles
     const int GWL_STYLE = -16;
+    const int GWL_EXSTYLE = -20;
     const uint WS_POPUP = 0x80000000;
     const uint WS_VISIBLE = 0x10000000;
-    
+    const uint WS_EX_TOOLWINDOW = 0x00000080;
 
     private void Start()
     {
@@ -49,8 +50,8 @@ public class TransparentWindow : MonoBehaviour
 
         //set properties
         //standard window: WS_CAPTION | WS_POPUP | WS_VISIBLE | WS_CLIPSIBLINGS | WS_SYSMENU
-        //removes border and title
-        SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+        SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);  //removes border and title
+        SetWindowLong(hwnd, GWL_EXSTYLE, WS_EX_TOOLWINDOW);     //hide icon in taskbar
 
         //Extend window into client area
         DwmExtendFrameIntoClientArea(hwnd, ref margins);

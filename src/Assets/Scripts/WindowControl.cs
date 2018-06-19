@@ -54,6 +54,7 @@ public class WindowControl : MonoBehaviour {
     private int sx, sy;                         //screen res
     private float mx0, my0, mx1, my1 = 0f;      //mouse position
     private bool dragging = false;
+    private Vector3 cent;
 
     private void Start()
     {
@@ -64,13 +65,14 @@ public class WindowControl : MonoBehaviour {
         sx = GetSystemMetrics(0);
         sy = GetSystemMetrics(1);
 #endif
-
+        
         //unity script
         sprite_pos = sprite_obj.transform.position;
         sprite = sprite_obj.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
         w.width = (int)sprite.rect.width;
         w.height = (int)sprite.rect.height;
 
+        cent = Camera.main.WorldToScreenPoint(Vector3.zero);
         //Screen.SetResolution(w.width, w.height, false);
     }
 
@@ -78,13 +80,12 @@ public class WindowControl : MonoBehaviour {
     private void Update()
     {
         //keep sprite at the center
-        Vector3 np = sprite_obj.transform.position;
-        np.x = np.y = 0f;
-        sprite_obj.transform.position = np;
+        //sprite_obj.transform.position = sprite_pos;
 
         Rect r = sprite.rect;
         Vector3 p = Camera.main.WorldToScreenPoint(sprite_pos);
         //print("current res: " + sx + ", " + sy);
+        //print("sprite screen pos: " + p.x + ", " + p.y);
 
 #if !UNITY_EDITOR
         var hwnd = GetActiveWindow();
@@ -93,17 +94,22 @@ public class WindowControl : MonoBehaviour {
 #endif
 
         int nx, ny, ncx, ncy;
-        nx = (int)win_pos.left + (int)p.x - (int)sprite.rect.width / 2;
-        ny = (int)win_pos.top + (int)w.height - (int)p.y - (int)sprite.rect.height / 2;
+        //nx = (int)win_pos.left + (int)p.x - (int)sprite.rect.width / 2;
+        //ny = (int)win_pos.top + w.height - (int)p.y - (int)sprite.rect.height / 2;
+        nx = (int)win_pos.left;
+        ny = (int)win_pos.top;
         ncx = w.width;
         ncy = w.height;
 
         //Mouse drag function
         if(Input.GetMouseButtonDown(0))
         {
-            dragging = true;
-            mx0 = lp.x;
-            my0 = lp.y;
+            //if(InSpriteRange(Input.mousePosition, sprite))
+            //{
+                dragging = true;
+                mx0 = lp.x;
+                my0 = lp.y;
+            //}
         }
         if(Input.GetMouseButtonUp(0))
         {
@@ -121,7 +127,7 @@ public class WindowControl : MonoBehaviour {
                 mx0 = mx1;
                 my0 = my1;
 #if !UNITY_EDITOR
-        SetWindowPos(hwnd, IntPtr.Zero, nx, ny, ncx, ncy, 0x4000);
+        SetWindowPos(hwnd, new IntPtr(-1), nx, ny, ncx, ncy, 0x4000);
 #endif
             }
 
@@ -129,5 +135,11 @@ public class WindowControl : MonoBehaviour {
         //t.text = nx.ToString() + ", " + ny.ToString() + ", " + ncx.ToString() + ", " + ncy.ToString();
         //t.text = "current pos: " + p.x + ", " + p.y;
         //t.text = "mouse pos: " + lp.x.ToString() + ", " + lp.y.ToString();
+    }
+
+    private bool InSpriteRange(Vector3 pos, Sprite s)
+    {
+        return pos.x > cent.x - s.rect.width / 2 && pos.x < cent.x + s.rect.width / 2 &&
+            pos.y > cent.y - s.rect.height / 2 && pos.y < cent.y + s.rect.height / 2;
     }
 }

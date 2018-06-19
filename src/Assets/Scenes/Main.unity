@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 172591549}
   - component: {fileID: 172591553}
   - component: {fileID: 172591554}
+  - component: {fileID: 172591555}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -156,7 +157,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -224,6 +225,17 @@ MonoBehaviour:
     width: 0
     height: 0
   t: {fileID: 1434826355}
+--- !u!114 &172591555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 172591548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5244b126e62e50d46b99e3ef4fa59eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &725330512
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +548,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2041056590}
+  - component: {fileID: 2041056591}
   m_Layer: 0
   m_Name: SpriteHolder
   m_TagString: Untagged
@@ -557,3 +570,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2041056591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041056589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c602323114d172e409d68f30d6fc995c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
