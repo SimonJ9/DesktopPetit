@@ -1,6 +1,14 @@
 # DesktopPetit
 ---
 
+### Update 2018/06/19
+
+The mascot window is now always in the front most
+The icon from taskbar is now hidden
+Press Q to quit the app
+
+Todo: Add right click GUI menu to replace exiting with Q
+
 ### Update 2018/06/05
 
 Now using Unity 2018.12f1 with WinAPI(user32.dll + dwmapi.dll)<br/>
@@ -15,4 +23,4 @@ The transparent window technique is from [this blog](https://alastaira.wordpress
 
 ### Development Environment
 
-    Unity 2017.3.0.f3
+    Unity 2018.1.2f1
